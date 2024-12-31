@@ -15,7 +15,7 @@ const (
 	writeLock lockType = unix.LOCK_EX
 )
 
-func lock(f File, lt lockType, immediately bool) error {
+func lock(f Locker, lt lockType, immediately bool) error {
 	flags := lt
 	if immediately {
 		flags |= unix.LOCK_NB
@@ -36,6 +36,6 @@ func lock(f File, lt lockType, immediately bool) error {
 	return nil
 }
 
-func unlock(f File) error {
+func unlock(f Locker) error {
 	return lock(f, unix.LOCK_UN, false)
 }
