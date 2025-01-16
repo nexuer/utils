@@ -67,7 +67,7 @@ func CopyFile(src, dst string) (int64, error) {
 }
 
 // ReadLineFunc read the file line by line and call f(c) to process each line of string
-func ReadLineFunc(path string, f func(num int, line string) bool) error {
+func ReadLineFunc(path string, f func(num int, line string) error) error {
 	file, err := os.Open(path)
 	if err != nil {
 		return err
@@ -78,7 +78,7 @@ func ReadLineFunc(path string, f func(num int, line string) bool) error {
 }
 
 // ReadLineBytesFunc read the file line by line and call f(c) to process each line of bytes
-func ReadLineBytesFunc(path string, f func(num int, line []byte) bool) error {
+func ReadLineBytesFunc(path string, f func(num int, line []byte) error) error {
 	file, err := os.Open(path)
 	if err != nil {
 		return err
