@@ -116,6 +116,16 @@ func (s Set[T]) UnsortedList() []T {
 	return res
 }
 
+// Range all items by fn.
+func (s Set[T]) Range(fn func(item T) error) error {
+	for key := range s {
+		if err := fn(key); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // Difference returns a set of objects that are not in s2.
 // For example:
 // s1 = {a1, a2, a3}
