@@ -34,3 +34,10 @@ func Equal[T comparable](a, b *T) bool {
 	}
 	return *a == *b
 }
+
+// ToAny converts a value of any type to a pointer to interface{}.
+// It first converts the value to interface{} and then returns a pointer to it.
+func ToAny[T any](v T) *any {
+	a := any(v)
+	return &a
+}
